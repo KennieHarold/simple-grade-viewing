@@ -1,0 +1,17 @@
+{
+    "a488ed28-02d3-4771-a696-79aa5a3d4970": {
+        "code": "1",
+        "title": "Math 1",
+        "desc": "Math for people"
+    },
+    "c3232b8a-a4f9-4c3d-92ce-c3677a0c2fc0": {
+        "code": "2",
+        "title": "Physics 2",
+        "desc": "Test"
+    },
+    "0098464b-e09a-4824-a37f-81e774733705": {
+        "code": "3",
+        "title": "English 2",
+        "desc": "English for all"
+    }
+}
