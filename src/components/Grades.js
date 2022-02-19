@@ -325,7 +325,7 @@ const GradeView = () => {
           marginBottom: "1.5em",
         }}
       >
-        <h5 className="mb-4 text-center">Prelim</h5>
+        <h5 className="mb-4 text-center">1st Year - First Semester</h5>
         <Button
           size="sm"
           onClick={() => {
