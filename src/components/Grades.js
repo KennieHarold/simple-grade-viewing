@@ -20,7 +20,7 @@ const GradeForm = () => {
   studentId = studentId[studentId.length - 1];
 
   let term = location.search.split("?term=");
-  term = term.length > 0 ? term[1] : "prelim";
+  term = term.length > 0 ? term[1] : "1st-1sem";
 
   useEffect(() => {
     async function init() {
@@ -329,7 +329,7 @@ const GradeView = () => {
         <Button
           size="sm"
           onClick={() => {
-            navigate("/admin/grades/edit/" + studentId + "?term=prelim");
+            navigate("/admin/grades/edit/" + studentId + "?term=1st-1sem");
           }}
         >
           Update Grade
@@ -344,14 +344,18 @@ const GradeView = () => {
             </tr>
           </thead>
           <tbody>
-            {subjects.map((subject, index) => (
-              <tr key={`grade-${index + 1}`}>
-                <td>{subject.title}</td>
-                <td>{getInstructorFromGrades("prelim", subject.id)}</td>
-                <td>{getGradeFromGrades("prelim", subject.id)}</td>
-                <td>{getStatus(getGradeFromGrades("prelim", subject.id))}</td>
-              </tr>
-            ))}
+            {subjects
+              .filter((subject) => subject.term === "1st-1sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("1st-1sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("1st-1sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("1st-1sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>
@@ -366,11 +370,11 @@ const GradeView = () => {
           marginBottom: "1.5em",
         }}
       >
-        <h5 className="mb-4 text-center">Midterm</h5>
+        <h5 className="mb-4 text-center">1st Year - Second Semester</h5>
         <Button
           size="sm"
           onClick={() => {
-            navigate("/admin/grades/edit/" + studentId + "?term=midterm");
+            navigate("/admin/grades/edit/" + studentId + "?term=1st-2sem");
           }}
         >
           Update Grade
@@ -385,14 +389,18 @@ const GradeView = () => {
             </tr>
           </thead>
           <tbody>
-            {subjects.map((subject, index) => (
-              <tr key={`grade-${index + 1}`}>
-                <td>{subject.title}</td>
-                <td>{getInstructorFromGrades("midterm", subject.id)}</td>
-                <td>{getGradeFromGrades("midterm", subject.id)}</td>
-                <td>{getStatus(getGradeFromGrades("midterm", subject.id))}</td>
-              </tr>
-            ))}
+            {subjects
+              .filter((subject) => subject.term === "1st-2sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("1st-2sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("1st-2sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("1st-2sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>
@@ -407,11 +415,11 @@ const GradeView = () => {
           marginBottom: "1.5em",
         }}
       >
-        <h5 className="mb-4 text-center">Pre-Final</h5>
+        <h5 className="mb-4 text-center">2nd Year - First Semester</h5>
         <Button
           size="sm"
           onClick={() => {
-            navigate("/admin/grades/edit/" + studentId + "?term=prefinal");
+            navigate("/admin/grades/edit/" + studentId + "?term=2nd-1sem");
           }}
         >
           Update Grade
@@ -426,14 +434,18 @@ const GradeView = () => {
             </tr>
           </thead>
           <tbody>
-            {subjects.map((subject, index) => (
-              <tr key={`grade-${index + 1}`}>
-                <td>{subject.title}</td>
-                <td>{getInstructorFromGrades("prefinal", subject.id)}</td>
-                <td>{getGradeFromGrades("prefinal", subject.id)}</td>
-                <td>{getStatus(getGradeFromGrades("prefinal", subject.id))}</td>
-              </tr>
-            ))}
+            {subjects
+              .filter((subject) => subject.term === "2nd-1sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("2nd-1sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("2nd-1sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("2nd-1sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>
@@ -448,11 +460,11 @@ const GradeView = () => {
           marginBottom: "1.5em",
         }}
       >
-        <h5 className="mb-4 text-center">Finals</h5>
+        <h5 className="mb-4 text-center">2nd Year - Second Semester</h5>
         <Button
           size="sm"
           onClick={() => {
-            navigate("/admin/grades/edit/" + studentId + "?term=finals");
+            navigate("/admin/grades/edit/" + studentId + "?term=2nd-2sem");
           }}
         >
           Update Grade
@@ -467,14 +479,198 @@ const GradeView = () => {
             </tr>
           </thead>
           <tbody>
-            {subjects.map((subject, index) => (
-              <tr key={`grade-${index + 1}`}>
-                <td>{subject.title}</td>
-                <td>{getInstructorFromGrades("finals", subject.id)}</td>
-                <td>{getGradeFromGrades("finals", subject.id)}</td>
-                <td>{getStatus(getGradeFromGrades("finals", subject.id))}</td>
-              </tr>
-            ))}
+            {subjects
+              .filter((subject) => subject.term === "2nd-2sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("2nd-2sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("2nd-2sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("2nd-2sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+      </div>
+
+      <div
+        style={{
+          padding: "1.25em",
+          backgroundColor: "white",
+          border: "1px solid rgba(0, 0, 0, 0.2)",
+          marginTop: "1em",
+          borderRadius: 10,
+          marginBottom: "1.5em",
+        }}
+      >
+        <h5 className="mb-4 text-center">3rd Year - First Semester</h5>
+        <Button
+          size="sm"
+          onClick={() => {
+            navigate("/admin/grades/edit/" + studentId + "?term=3rd-1sem");
+          }}
+        >
+          Update Grade
+        </Button>
+        <Table bordered className="mt-4">
+          <thead>
+            <tr>
+              <th>Subject Title</th>
+              <th>Instructor</th>
+              <th>Grade</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subjects
+              .filter((subject) => subject.term === "3rd-1sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("3rd-1sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("3rd-1sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("3rd-1sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+      </div>
+
+      <div
+        style={{
+          padding: "1.25em",
+          backgroundColor: "white",
+          border: "1px solid rgba(0, 0, 0, 0.2)",
+          marginTop: "1em",
+          borderRadius: 10,
+          marginBottom: "1.5em",
+        }}
+      >
+        <h5 className="mb-4 text-center">3rd Year - Second Semester</h5>
+        <Button
+          size="sm"
+          onClick={() => {
+            navigate("/admin/grades/edit/" + studentId + "?term=3rd-2sem");
+          }}
+        >
+          Update Grade
+        </Button>
+        <Table bordered className="mt-4">
+          <thead>
+            <tr>
+              <th>Subject Title</th>
+              <th>Instructor</th>
+              <th>Grade</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subjects
+              .filter((subject) => subject.term === "3rd-2sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("3rd-2sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("3rd-2sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("3rd-2sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+      </div>
+
+      <div
+        style={{
+          padding: "1.25em",
+          backgroundColor: "white",
+          border: "1px solid rgba(0, 0, 0, 0.2)",
+          marginTop: "1em",
+          borderRadius: 10,
+          marginBottom: "1.5em",
+        }}
+      >
+        <h5 className="mb-4 text-center">4th Year - First Semester</h5>
+        <Button
+          size="sm"
+          onClick={() => {
+            navigate("/admin/grades/edit/" + studentId + "?term=4th-1sem");
+          }}
+        >
+          Update Grade
+        </Button>
+        <Table bordered className="mt-4">
+          <thead>
+            <tr>
+              <th>Subject Title</th>
+              <th>Instructor</th>
+              <th>Grade</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subjects
+              .filter((subject) => subject.term === "4th-1sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("4th-1sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("4th-1sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("4th-1sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+      </div>
+
+      <div
+        style={{
+          padding: "1.25em",
+          backgroundColor: "white",
+          border: "1px solid rgba(0, 0, 0, 0.2)",
+          marginTop: "1em",
+          borderRadius: 10,
+          marginBottom: "1.5em",
+        }}
+      >
+        <h5 className="mb-4 text-center">4th Year - Second Semester</h5>
+        <Button
+          size="sm"
+          onClick={() => {
+            navigate("/admin/grades/edit/" + studentId + "?term=4th-2sem");
+          }}
+        >
+          Update Grade
+        </Button>
+        <Table bordered className="mt-4">
+          <thead>
+            <tr>
+              <th>Subject Title</th>
+              <th>Instructor</th>
+              <th>Grade</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subjects
+              .filter((subject) => subject.term === "4th-2sem")
+              .map((subject, index) => (
+                <tr key={`grade-${index + 1}`}>
+                  <td>{subject.title}</td>
+                  <td>{getInstructorFromGrades("4th-2sem", subject.id)}</td>
+                  <td>{getGradeFromGrades("4th-2sem", subject.id)}</td>
+                  <td>
+                    {getStatus(getGradeFromGrades("4th-2sem", subject.id))}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>

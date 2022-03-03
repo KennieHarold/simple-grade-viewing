@@ -1,56 +1,20 @@
 {
     "grade-c40e5a21-f641-4654-8cb7-c44f4cb5ca35": {
-        "prelim": [
+        "1st-1sem": [
             {
                 "subjectId": "a488ed28-02d3-4771-a696-79aa5a3d4970",
                 "instructorId": "71d40ae9-71e1-42ec-a9c4-2c74296202dd",
-                "grade": "1.25"
+                "grade": "2.00"
             },
             {
                 "subjectId": "c3232b8a-a4f9-4c3d-92ce-c3677a0c2fc0",
-                "instructorId": "3fced297-ef7e-4fb6-9367-cc843c6f554f",
-                "grade": "1.00"
+                "instructorId": "71d40ae9-71e1-42ec-a9c4-2c74296202dd",
+                "grade": "2.00"
             },
             {
                 "subjectId": "0098464b-e09a-4824-a37f-81e774733705",
                 "instructorId": "71d40ae9-71e1-42ec-a9c4-2c74296202dd",
-                "grade": "2.25"
-            }
-        ],
-        "midterm": [
-            {
-                "subjectId": "a488ed28-02d3-4771-a696-79aa5a3d4970",
-                "instructorId": "400cfa65-7a8b-4e30-be14-444faf267b7a",
-                "grade": "1.00"
-            },
-            {
-                "subjectId": "c3232b8a-a4f9-4c3d-92ce-c3677a0c2fc0",
-                "instructorId": "400cfa65-7a8b-4e30-be14-444faf267b7a",
-                "grade": "1.00"
-            },
-            {
-                "subjectId": "0098464b-e09a-4824-a37f-81e774733705",
-                "instructorId": "400cfa65-7a8b-4e30-be14-444faf267b7a",
-                "grade": "1.00"
-            }
-        ]
-    },
-    "grade-1db0c211-a023-4831-9ed8-508008bd6ee5": {
-        "prelim": [
-            {
-                "subjectId": "a488ed28-02d3-4771-a696-79aa5a3d4970",
-                "instructorId": "400cfa65-7a8b-4e30-be14-444faf267b7a",
-                "grade": "1.00"
-            },
-            {
-                "subjectId": "c3232b8a-a4f9-4c3d-92ce-c3677a0c2fc0",
-                "instructorId": "400cfa65-7a8b-4e30-be14-444faf267b7a",
-                "grade": "1.00"
-            },
-            {
-                "subjectId": "0098464b-e09a-4824-a37f-81e774733705",
-                "instructorId": "400cfa65-7a8b-4e30-be14-444faf267b7a",
-                "grade": "1.00"
+                "grade": "2.00"
             }
         ]
     }

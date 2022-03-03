@@ -7,6 +7,28 @@ import SimpleAlert from "./SimpleAlert";
 import { BiUserPlus } from "react-icons/bi";
 import { MainContext } from "../contexts/MainContext";
 
+function getTermFromCode(termCode) {
+  if (termCode === "1st-1sem") {
+    return "1st Year - First Semester";
+  } else if (termCode === "1st-2sem") {
+    return "1st Year - Second Semester";
+  } else if (termCode === "2nd-1sem") {
+    return "2nd Year - First Semester";
+  } else if (termCode === "2nd-2sem") {
+    return "2nd Year - Second Semester";
+  } else if (termCode === "3rd-1sem") {
+    return "3rd Year - First Semester";
+  } else if (termCode === "3rd-2sem") {
+    return "3rd Year - Second Semester";
+  } else if (termCode === "4th-1sem") {
+    return "4th Year - First Semester";
+  } else if (termCode === "4th-2sem") {
+    return "4th Year - Second Semester";
+  } else {
+    return "Not Set";
+  }
+}
+
 const SubjectForm = ({ from }) => {
   const { selectedSubject, setSelectedSubject } = useContext(MainContext);
   const navigate = useNavigate();
@@ -15,6 +37,7 @@ const SubjectForm = ({ from }) => {
   const [code, setCode] = useState("");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [term, setTerm] = useState("");
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState(
@@ -28,6 +51,7 @@ const SubjectForm = ({ from }) => {
           setCode(selectedSubject.code);
           setTitle(selectedSubject.title);
           setDesc(selectedSubject.desc);
+          setTerm(selectedSubject.term || "");
         } else {
           let pathId = location.pathname.split("/");
           pathId = pathId[pathId.length - 1];
@@ -36,6 +60,7 @@ const SubjectForm = ({ from }) => {
             code: "",
             title: "",
             desc: "",
+            term: "",
           };
 
           const res = await getSubjectById(pathId);
@@ -49,6 +74,7 @@ const SubjectForm = ({ from }) => {
             setCode(subject.code);
             setTitle(subject.title);
             setDesc(subject.desc);
+            setTerm(subject.term || "");
           }
         }
       }
@@ -66,12 +92,14 @@ const SubjectForm = ({ from }) => {
       code,
       title,
       desc,
+      term,
     });
 
     if (res.status) {
       setCode("");
       setTitle("");
       setDesc("");
+      setTerm("");
       setAlertMessage("Successfully Added!");
       setShowAlert(true);
     } else {
@@ -91,6 +119,7 @@ const SubjectForm = ({ from }) => {
         code,
         title,
         desc,
+        term,
       },
       pathId
     );
@@ -153,6 +182,31 @@ const SubjectForm = ({ from }) => {
               placeholder="Enter description"
               onChange={(e) => setDesc(e.target.value)}
             />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicTerm">
+            <Form.Label>Term or Semester</Form.Label>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              value={term}
+              onChange={(e) => {
+                console.log(e.target.value);
+                setTerm(e.target.value);
+              }}
+            >
+              <option value="" disabled>
+                Select Term or Semester
+              </option>
+              <option value="1st-1sem">1st Year - First Semester</option>
+              <option value="1st-2sem">1st Year - Second Semester</option>
+              <option value="2nd-1sem">2nd Year - First Semester</option>
+              <option value="2nd-1sem">2nd Year - Second Semester</option>
+              <option value="3rd-1sem">3rd Year - First Semester</option>
+              <option value="3rd-2sem">3rd Year - Second Semester</option>
+              <option value="4th-1sem">4th Year - First Semester</option>
+              <option value="4th-2sem">4th Year - Second Semester</option>
+            </select>
           </Form.Group>
         </Form>
         <div className="d-flex flex-row align-self-end">
@@ -219,6 +273,7 @@ const SubjectView = () => {
               <th>Subject Code</th>
               <th>Subject Title</th>
               <th>Description</th>
+              <th>Term or Semester</th>
             </tr>
           </thead>
           <tbody>
@@ -235,6 +290,7 @@ const SubjectView = () => {
                 <td>{subject.code}</td>
                 <td>{subject.title}</td>
                 <td>{subject.desc}</td>
+                <td>{getTermFromCode(subject.term)}</td>
               </tr>
             ))}
           </tbody>
